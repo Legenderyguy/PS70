@@ -1,97 +1,112 @@
 body {
-    font: 20px "Arial", Arial, sans-serif;
-    line-height: 1.8;
-    color: #086788;
-    background-color: #D4DDED;
-    padding-top: 0px !important;
-  }
-
-.textcontainer {
-  padding: 2% 10%;;
+  font: 20px "Arial", sans-serif;
+  line-height: 1.8;
+  color: #086788;
+  background-color: #D4DDED;
+  padding-top: 0;
 }
 
-p {font-size: 16px;}
-.margin {margin-bottom: 30px;}
+p {
+  font-size: 16px;
+}
 
 a {
   color: #086788;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.margin {
+  margin-bottom: 30px;
 }
 
 .container-fluid {
-  padding: 0px;
-  /*padding-bottom: 70px;*/
+  padding: 0;
 }
 
 nav {
-  background-color: ADB6C4;
-  color: #ADB6C4;
-  padding: 50px 0px;
+  background-color: #086788;
+  padding: 20px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-title {
+  margin-left: 15px;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 .navbar-nav {
   display: flex;
   justify-content: flex-start;
-  gap: 30px;
-}
-
-.nav-title{
-  margin-left: 15px;
-  margin-right: 15px;
-  color: #086788;
+  gap: 10px;
 }
 
 .nav-link {
-  border: 3px outset #8f8e8e;
-  border-radius: 20px;
-  padding: 10px 30px;
-  background-color: #B3FFB3;
-  color:#086788 !important;
-  transition: 0.3s;
+  background-color: #17a2b8;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 18px;
+  color: #ffffff !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .nav-link:hover {
-  border: px outset #FFFFFF;
-  border-radius: 20px;
-  padding: 10px 30px;
-  background-color: #FFE66A;
-  transition: 0.3s;
+  background-color: #138496;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+.nav-link.active {
+  background-color: #0d6efd;
 }
 
 #btn {
-  border: 3px outset #FFFFFF;
+  border: 2px solid #fff;
   border-radius: 40px;
   padding: 10px 30px;
   background-color: #a3a3a3;
-  color: #000000;
+  color: #000;
   transition: 0.3s;
 }
 
 #btn:hover {
-  border: 3px inset #FFFFFF;
-  border-radius: 40px;
-  padding: 10px 30px;
-  background-color: #a3a3a3;
-  transition: 0.3s;
+  border: 2px inset #fff;
+  background-color: #888;
 }
 
 .row {
-  margin: auto auto;
+  margin: 40px auto;
 }
 
-.flexrow {
-  display: flex;
-  justify-content: space-evenly;
+.card {
+  border: none;
+  background-color: #f0f3f7;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.center-row {
-  display: flex;
-  justify-content: center;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-code {
-  background-color: #2d2b33;
-  color: #EEE7E8;
-  font-family: 'Courier New', Courier, monospace;
+.card img {
+  border-radius: 12px 12px 0 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 15px;
+  text-align: center;
 }
 
 .caption {
@@ -103,4 +118,82 @@ code {
 
 #aboutme {
   padding: 20px;
+}
+
+/* ---------------------- */
+/* Button 54 Custom Style */
+/* ---------------------- */
+
+.button-54 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #ffffff;
+  border: 3px solid #000;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  box-shadow:
+    1px 1px 0px 0px,
+    2px 2px 0px 0px,
+    3px 3px 0px 0px,
+    4px 4px 0px 0px,
+    5px 5px 0px 0px;
+  transition: all 0.2s ease;
+}
+
+.button-54:hover {
+  background-color: #eee;
+}
+
+.button-54:active {
+  box-shadow: none;
+  top: 5px;
+  left: 5px;
+}
+
+@media (min-width: 768px) {
+  .button-54 {
+    padding: 0.25em 0.75em;
+  }
+}
+.button-89 {
+  --b: 3px;   /* border thickness */
+  --s: .45em; /* size of the corner */
+  --color: #373B44;
+
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b), #0000 90deg, var(--color) 0)
+    var(--_p) var(--_p) / calc(100% - var(--b) - 2 * var(--_p)) calc(100% - var(--b) - 2 * var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 16px;
+  background-color: white;
+
+  border: 0;
+  border-radius: 0.5em;
+  font-weight: 600;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-89:hover,
+.button-89:focus-visible {
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+}
+
+.button-89:active {
+  background: var(--color);
+  color: #fff;
 }
