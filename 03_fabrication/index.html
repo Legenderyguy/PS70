@@ -1,59 +1,181 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PS70: Week 3 - Hand Tools and Fabrication</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../style.css" rel="stylesheet">
-</head>
 
-<body class="bg-light">
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a class="navbar-brand" href="#">PS70 Fall 2024</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
-        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../about.html">About</a>
-          </li>
-        </ul>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PS70: Week 3 - Hand Tools and Fabrication</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    
+  </head>
+
+  <!-- Lightbox Modal -->
+  <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark border-0 p-0">
+        <img id="lightboxImage" src="" alt="Full View" class="img-fluid w-100 rounded" />
       </div>
     </div>
-  </nav>
+  </div>
 
-  <!-- Main Content -->
-  <main class="container my-5">
-    <h1 class="mb-4">Week 3: Hand Tools and Fabrication</h1>
 
-    <section class="mb-5">
-      <h2 class="h4 mb-3">Kinetic Sculpture</h2>
-      <p>
-        In this week's assignment, we explore basic fabrication techniques using hand tools by building a kinetic sculpture.
-        This involves planning mechanical motion, experimenting with physical linkages, and crafting parts that fit together.
-      </p>
-      <p>
-        (You can elaborate here with your idea, images of sketches or prototypes, process documentation, or final result.)
-      </p>
-    </section>
-  </main>
+  <body class="bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="#">PS70 Fall 2024</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+          aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-  <footer class="bg-dark text-light py-3 mt-auto">
-    <div class="container text-center">
-      <small>&copy; 2024 PS70 Digital Fabrication | Harvard University</small>
+    <!-- Main Content -->
+    <main class="container my-5">
+      <h1 class="mb-4">Week 3: Hand Tools and Fabrication</h1>
+
+      <section class="mb-5">
+        <h2 class="h4 mb-3">Kinetic Sculpture</h2>
+
+        <!-- CAD Process Section -->
+<section id="cad-docs" class="mb-5">
+  <h2 class="h4 mb-3">CAD Process Documentation</h2>
+
+  <p>Here are the versions of my CAD design process. Click on an image to enlarge it:</p>
+
+  <div class="scroll-section d-flex flex-nowrap overflow-auto gap-3">
+    <figure class="text-center">
+      <img src="Screenshots/Version 1.png" alt="CAD Step 1" class="img-fluid rounded">
+      <figcaption>Version 1</figcaption>
+    </figure>
+    <figure class="text-center">
+      <img src="Screenshots/Version 3.png" alt="CAD Step 2" class="img-fluid rounded">
+      <figcaption>Version 2</figcaption>
+    </figure>
+    <figure class="text-center">
+      <img src="Screenshots/Version 4.png" alt="CAD Step 3" class="img-fluid rounded">
+      <figcaption>Version 3</figcaption>
+    </figure>
+    <figure class="text-center">
+      <img src="Screenshots/Version 5.png" alt="CAD Step 4" class="img-fluid rounded">
+      <figcaption>Version 4</figcaption>
+    </figure>
+    <figure class="text-center">
+      <img src="Screenshots/Version 6.png" alt="CAD Step 5" class="img-fluid rounded">
+      <figcaption>Version 5</figcaption>
+    </figure>
+    <figure class="text-center">
+      <img src="Screenshots/Version 7.png" alt="CAD Step 6" class="img-fluid rounded">
+      <figcaption>Version 6</figcaption>
+    </figure>
+    <figure class="text-center">
+      <img src="Screenshots/Version 8.png" alt="CAD Step 7" class="img-fluid rounded">
+      <figcaption>Version 7</figcaption>
+    </figure>
+  </div>
+</section>
+
+
+  <section id="version-explanations" class="mb-5">
+  <h2 class="h4 mb-3">Version Explanations</h2>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Version 1</h5>
+          <p class="card-text">In this first version of my stage, my goal was to make a quick & undetailed sketch of the scene. You will see that this design has changed a lot in further versions.</p>
+        </div>
+      </div>
     </div>
-  </footer>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Version 2</h5>
+          <p class="card-text">In the second version, I put holes on the walls of my scene to be able to install the upper floor of the stage.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Version 3</h5>
+          <p class="card-text">In the third version, I realized that the lines between the holes could be a problem (so I removed them). Also, I added holes into the side walls for the dowel to go through.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Version 4</h5>
+          <p class="card-text">The holes for the upper floor were too close to the top edge of the wall, which risked cutting errors. I moved them down and added spacing to improve durability.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Version 5</h5>
+          <p class="card-text">I shortened the backplate to save material. Originally it was a background, but I decided to focus more on the mechanism instead of visual complexity.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Version 6</h5>
+          <p class="card-text">I realized that the backplate might interfere with working on the internal mechanisms, so I removed it to improve access and simplicity.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Version 7</h5>
+          <p class="card-text">I sketched out the wave and boat — these will be the main components in motion within my kinetic sculpture.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+</section>
 
-</html>
+      </section>
+    </main>
+
+    <footer class="bg-dark text-light py-3 mt-auto">
+      <div class="container text-center">
+        <small>&copy; 2024 PS70 Digital Fabrication | Harvard University</small>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.scroll-section img').forEach(img => {
+        img.addEventListener('click', () => {
+          document.getElementById('lightboxImage').src = img.src;
+          const modal = new bootstrap.Modal(document.getElementById('lightboxModal'));
+          modal.show();
+        });
+      });
+    });
+  </script>
+
+  </body>
+
+  </html>

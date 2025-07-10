@@ -197,3 +197,69 @@ nav {
   background: var(--color);
   color: #fff;
 }
+
+.scroll-section {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 10px 0 1rem;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+}
+
+.scroll-section figure {
+  flex: 0 0 auto;
+  width: 220px;
+  margin: 0;
+  text-align: center;
+}
+
+.scroll-section img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.scroll-section img:hover {
+  transform: scale(1.05);
+}
+
+.scroll-section figcaption {
+  font-size: 14px;
+  color: #555;
+  margin-top: 8px;
+}
+
+.scroll-section::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-section::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.scroll-section::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+.scroll-section figcaption {
+  font-size: 18px; /* or any size you like */
+  color: #333;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.scroll-section figcaption {
+  font-size: 18px;
+  color: #333;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
