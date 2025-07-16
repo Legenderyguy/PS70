@@ -1,55 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Week 5: 3D Design & Printing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Week 5: 3D design and printing </title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="../style.css" rel="stylesheet">
+  <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet">
 
+  <link href="../style.css" rel="stylesheet">
 
-<nav class="navbar navbar-expand-sm navbar-dark" style=" color: #EEE7E8;">
-  <div style="align-items: center; justify-content: center;" class="container-fluid">
-    <div class="flexrow">
-      <h2 class="nav-title">PS70 Fall 2024</h2>
+  <script type="module" 
+          src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+</head>
+<body class="bg-light">
+
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid justify-content-center">
+      <h2 class="nav-title text-white mb-0">PS70 Fall 2024</h2>
+      <div class="navbar-nav ms-4">
+        <a class="nav-link text-white" href="../index.html">Home</a>
+        <a class="nav-link text-white" href="../about.html">About</a>
+      </div>
     </div>
-    <div class="navbar-nav">
-      <h4><a class="nav-link" href="../index.html">Home</a></h4>
-      <h4><a class="nav-link" href="../about.html">About</a></h4>
-    </div>
+  </nav>
+
+  <div class="container py-4">
+
+    <h2 class="mb-4">Week 3: 3D Design & Printing</h2>
+
+    <img 
+      src="image.png" 
+      alt="Circuit drawing" 
+      class="img-fluid rounded mb-4">
+
+    <h3>Documentation</h3>
+    <p style="font-size:1.25rem;">
+      For this week's assignment, I used Polycam to scan my water bottle.
+    </p>
+
+    <img 
+      src="Water_Bottle.jpeg" 
+      alt="Water bottle" 
+      class="img-fluid rounded mb-4">
+
+    <model-viewer
+      src="Scanned-Object.glb"
+      alt="Scanned water bottle"
+      camera-controls
+      auto-rotate
+      style="width:100%; max-width:600px; height:400px; margin: auto; display: block;"
+    ></model-viewer>
+
+    <p class="mt-2">
+      <a download href="Scanned-Object.glb">
+        Download the scanned model (GLB)
+      </a>
+    </p>
+
+    <hr class="my-4">
+
+    <p style="font-size:1.25rem;">
+      Next, we had to 3D print an object not easily made subtractively. To get ahead on my final, I adapted a rubber‑band shooter frame (found <a href="https://makerworld.com/en/models/161573-21-shot-rubber-band-shooter#profileId-180250">here</a>) by removing its handle in Fusion before printing.
+    </p>
+
+    <ul>
+      <li><a download href="Gun_frame_v2.stl">Download STL file</a></li>
+      <li><a download href="ShooterFrame.gcode">Download GCODE file</a></li>
+    </ul>
+
   </div>
-</nav>
-
-<body>
-<xmp style="display:none;">
-<div class="textcontainer">
-<p class="margin">   </p>
-
-<h2>Week 3: 3D Design & Printing</h2>
-
-<img src="image.png" alt="Wokwi drawing of my circuit." class=" -fluid rounded"> 
-
-<h3>Documentation:</h3>
-<p style ='font-size: 24px;'> For this week's assignment, I used polycam to scan my water bottle.</p>
-
-<img src="Water_Bottle.jpeg" alt="image of my water bottle" class="-fluid rounded">
-<br>
-<a download href='Scanned Object.glb'> Here is the download link for the scanned version</a>
 
 
-<p style='font-size: 24px;'>Other than the scanning part, we had use the 3d printer to manufacture a small object that could not be (easily) made by subtractive methods.
-  Because I wanted to make some progress on my final project, I tried to find solutions to make a rubber band shooter. After a while I found <a href="https://makerworld.com/en/models/161573-21-shot-rubber-band-shooter#profileId-180250">this guy who made an idea that seemed like it would worth a shot.</a>
-  I decided to start with printing the shooter's frame. So I imported into Fusion and removed the handle to make it a better fit for my desktop buddy.
-</p>
-
-<a download href='Gun_frame v2.stl'>Here is my STL file <a>
-
-<a download href='ShooterFrame.gcode'>Here is my GCODE file <a>
-
-
-</div>
-</xmp>
+  <script src="../strapdown.js"></script>
+  <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
+  </script>
 </body>
-
-<script src="../strapdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
-
 </html>
