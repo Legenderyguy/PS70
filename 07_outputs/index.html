@@ -23,11 +23,216 @@
 <div class="textcontainer">
 <p class="margin">   </p>
 
-<h3>Week 7: Electronic Outputs</h3>
+<h1>Week 7: Electronic Outputs</h1>
+<br>
+<h1>Assignment: Minimum Viable Product for Final Project</h2>
+
+<h2>Documentation:</h2>
+<p style="font-size: 20px;">For this week's assignment, I tried to make a very simple prototype of my final project. I focused on creating the basic functionalities of my final project which are object tracking and rubber band shooting.</p>
+<br>
+<p style="font-size: 20px;">I decided to start with the object tracking feature, since it is one of the key features of my projects. For that goal I followed a <a href="https://youtu.be/bZIKVaD3dRk?si=4EN5Rle8v1wfFzDH">tutorial on youtube</a> that made everything a lot more clear for me (and he probably explains the process a lot better than me).</p>
+<h3>Parts List and Prices:</h3>
+<table class="table table-striped" style="font-size: 18px;">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ESP32-CAM</td>
+      <td>Microcontroller with built-in camera</td>
+      <td>$10.00</td>
+    </tr>
+    <tr>
+      <td>Wires & other miscellaneous</td>
+      <td>Basic prototyping and connections</td>
+      <td>$3.00</td>
+    </tr>
+    <tr>
+      <td>USB TO TTL CONVERTER (CP210)</td>
+      <td>For programming the ESP32-CAM</td>
+      <td>$5.00</td>
+    </tr>
+  </tbody>
+</table>
+<p style="font-size: 20px;">Total Cost: $18.00</p>
+
+<h3>Programming the ESP32-CAM:</h3>
+<p style="font-size: 20px;">To program the ESP32-CAM module, I first made the necessary connections with the USB to TTL converter.</p>
+<img src="https://circuitdigest.com/sites/default/files/circuitdiagram_mic/circuit-object-detector.jpg" alt="ESP32-CAM Connections" style="max-width: 100%; height: auto;">
+<p style = "font-size: 20px;">You can skip the OLED screen connections(it is optional). 
+  The same guy also has a article in which he explains the process of programming the ESP32-CAM module <a href = "https://circuitdigest.com/microcontroller-projects/how-to-program-esp32-cam-using-arduino">If you are completely new to using it</a>.
+</p>
+
+<div class="textcontainer">
+
+  <h1>How to Use ESP32-CAM for Object Recognition</h1>
+
+  <p style="font-size: 20px;">These procedures can be split into three main parts: <strong>Data Acquisition</strong>, <strong>Building the ML Model using Edge Impulse</strong>, and <strong>Testing the Prototype</strong>.</p>
+
+  <h2>Data Acquisition</h2>
+
+  <p style = "font-size: 20px;">There are three main ways to acquire data for training our model. Because I decided to capture my own images using the ESP32-CAM, I will focus on that method.</p>
+
+  <h3>✔ Check List to Remember:</h3>
+  <ul>
+    <li>Collect at least 50 images of each object you want to classify. More images mean more accuracy (but also more training time in Edge Impulse so you shouldn't take hundreds and hundreds of images).</li>
+    <li>A plain, empty background is preferred, but not mandatory.</li>
+    <li>256x256px is a good resolution—clear but not too heavy to train.</li>
+    <li>My focus: my phone</li>
+  </ul>
+
+ <h3>Option 1: Searching for Datasets Online</h3>
+  <p style="font-size: 20px;">Use platforms like Kaggle, Google Dataset Search, OpenML. Just make sure your dataset meets the checklist above.</p>
+  <img src="https://circuitdigest.com/sites/default/files/inlineimages/u5/vegetable-classification-kaggle.jpg" alt="Kaggle dataset example" style="max-width: 100%; height: auto;">
+
+  <h3>Option 2: Downloading Images One by One</h3>
+  <p style="font-size: 20px;">Google images, download carefully (no watermarks), and label manually. It works, but it's slow.</p>
+
+  <h3>Option 3: Capturing Our Own Images with ESP32-CAM (The method I used)</h3>
+  <p style="font-size: 20px;">You can also use <code>EloquentEsp32cam</code> library to capture images from ESP32-CAM for our dataset.</p>
+
+  <h4>Step 1: Installing the Library</h4>
+  <p style="font-size: 20px;">Install <strong>EloquentEsp32cam</strong> from the Arduino Library Manager.</p>
+
+  <img src="https://circuitdigest.com/sites/default/files/inlineimages/u5/esp32-image-collecting-webserver.jpg" alt="EloquentEsp32cam Library" style="max-width: 100%; height: auto;">
+
+  <h4>Step 2: Load the Example Code</h4>
+  <p style="font-size: 20px;">File → Examples → EloquentEsp32cam → Collect_Images_for_EdgeImpulse.</p>
+
+  <img src = "https://circuitdigest.com/sites/default/files/inlineimages/u5/location-example.jpg" alt = "Path to Example Code" style="max-width: 100%; height: auto;">
+
+  <p style="font-size: 20px;">Next, in that program, we need to enter our Wi-Fi hotspot credentials.</p>
+  <p style="font-size: 20px;">While I say hotspot credentials, I mean the name and password of the Wi-Fi network you want the ESP32-CAM to connect to (it has to be on the same network as you and I recommend that you do this in SC-102 on network MAKERSPACE (if you are in harvard) or at the comfort of your home).
+    Also remember that trying the use public networks like Harvard's eduroam will not if they have a authentication method different than a password. </p>
+  </p>
+  <pre><code>#define WIFI_SSID "SSID"
+#define WIFI_PASS "PASSWORD"
+#define HOSTNAME "esp32cam"</code></pre>
+  <p style="font-size: 20px;">You can see the above lines at the start of the program. Kindly enter your Wi-Fi hotspot name in “SSID” and password in "PASSWORD" (in between the two <code>"</code>).
+     Remember that the ESP32 is compatible only with the 2.4 GHz network. Other than that, before uploading the code, ensure that you have selected the correct board and port in the Arduino IDE and putted the device in download mode.</p>
+    </p>
+    <img src="https://circuitdigest.com/sites/default/files/inlineimages/u5/ESP32-cam-in-programming-mode.jpg" alt="ESP32-CAM Download mode" style="max-width: 100%; height: auto;">
+
+  <h4>Step 3: Access the Web Server</h4>
+  <p style="font-size: 20px;">Open Serial Monitor at 115200 baud. Copy the printed IP address. Paste it in a browser on the same Wi-Fi.</p>
+
+  <img src="https://circuitdigest.com/sites/default/files/inlineimages/u5/webserver-served-esp32.jpg" alt="ESP32-CAM Web Server" style="max-width: 100%; height: auto;">
+
+  <p style="font-size: 20px;">You’ll see a web interface. Click <strong>Start Collecting</strong>. Then <strong>Download</strong> when done. Label the zip file with the object name.</p>
+
+  <img src="https://circuitdigest.com/sites/default/files/inlineimages/u5/image-acquisition.jpg" alt="Collecting Images" style="max-width: 100%; height: auto;">
+
+  <p style="font-size: 20px;">Repeat for all your target classes. I highly recommend that you use good lighting and a simple background (single color).</p>
+
+  <h2>Setting up Edge Impulse</h2>
+
+  <h4>Step 1: Sign Up & Log In</h4>
+  <p style="font-size: 20px;">Go to <a href="https://edgeimpulse.com" target="_blank">Edge Impulse</a>. Create an account and sign in.</p>
+  <img src="https://circuitdigest.com/sites/default/files/inlineimages/u5/login-edge-impulse.jpg" alt="Edge Impulse Sign Up" style="max-width: 100%; height: auto;">
+
+  <h4>Step 2: Create New Project</h4>
+  <p style="font-size: 20px;">After signing in to Edge Impulse, click on "Create new project". Then, enter the title of your project; I went with with "Iphone Tracking".
+    Next, leave the rest of the settings as default, and click "Create new project"</p>
+  <img src="https://circuitdigest.com/sites/default/files/inlineimages/u5/new-project-eddge-impulse.jpg" alt="Create New Project" style="max-width: 100%; height: auto;">
+
+  <h4>Step 3: Data Acquisition in Edge Impulse</h4>
+  <br>
+  <img src="https://circuitdigest.com/sites/default/files/inlineimages/u5/collected-data-edge-impulse.jpg" alt="Data Acquisition" style="max-width: 100%; height: auto;">
+  <ul>
+    <li>Follow the above steps to add each folder to your dataset collection. That's it; next, we are going to label our data.</li>
+    <li>At the top, you can see the menu "Labeling Queue." Select that, and you will be directed to the window where you can start labeling the images you have added. This is actually a bit time-consuming. You need to draw a bounding box one by one for all the data you have collected.</li>
+  </ul>
+  <img src="https://circuitdigest.com/sites/default/files/inlineimages/u5/labeling-object_0.jpg" alt="Labeling Queue" style="max-width: 100%; height: auto;">
+
+  <p style="font-size: 20px;">The above image shows the steps for labeling the objects. While labeling, try to make a square boundary as the data will be processed in 96 x 96 px. So, mostly try to make it square to get the maximum accuracy out of the system (I used squares to track my phones camera instead of the whole body).
+In the labeling window, you can see an option like "Label Suggestions." It is very useful if you have high-quality images or continuous images. If it is in "Track objects between frames," the object you drew a bounding box around once is then tracked in the upcoming frames, thus reducing the work time. Next, you can use "Classify using YOLOv5" to recognize some of the common objects automatically by the system. This way, it labels and draws the bounding box itself.
+Therefore, we have finished our tasks in the area of Data Acquisition. Next, let's look at creating the impulse.</p>
+
+<br>
+
+  <h4>Step 4: Creating Impulse</h4>
+
+  <img src="https://circuitdigest.com/sites/default/files/inlineimages/u5/impulse-in-edge-impulse.jpg" alt="Create Impulse" style="max-width: 100%; height: auto;">
+  <ul>
+    <li>Go to “Create Impulse”.</li>
+    <li>Set image size to 96x96.</li>
+    <li>Resize mode: “Fit shortest”.</li>
+    <li>Add “Image” block (processing).</li>
+    <li>Add “Object Detection” block (learning).</li>
+    <li>Save Impulse.</li>
+  </ul>
+
+  <h4>Step 5: Generating Features</h4>
+  <img src="https://circuitdigest.com/sites/default/files/inlineimages/u5/features-edge-impulse.jpg" alt="Generate Features" style="max-width: 100%; height: auto;"> 
+  <ul>
+    <li>Click “Image” in the sidebar.</li>
+    <li>Set color mode to “Grayscale”.</li>
+    <li>Click “Generate features”.</li>
+    <li>Look at the Feature Explorer chart (colors should be well separated).</li>
+  </ul>
+
+  <h4>Step 6: Training the Model</h4>
+
+  <img src="https://circuitdigest.com/sites/default/files/inlineimages/u5/training-the-model.jpg" alt="Training Model" style="max-width: 100%; height: auto;">
+  <ul>
+    <li>Go to “Object Detection” in the sidebar.</li>
+    <li>Adjust training cycles and learning rate as needed.</li>
+    <li>Click “Start Training”.</li>
+    <li>Look for F1 score when complete (higher is better).</li>
+  </ul>
+
+  <h4>Step 7: Deployment of the Model</h4>
+
+    <p style = "font-size: 20px;">First, click the "Deployment" option available in the left-side menu column, and you will see the deployment page. Talking about deployment, there are multiple options. You can even use your browser to check the model in real-time. So, check out the page for more information.</p>
+<ul>
+<li>Now, we are going to do four things: </li>
+
+<li>Go to the deployment page.</li>
+
+<li>Select "Arduino Library" as a deployment option.</li>
+
+<li>Change the target to "Espressif ESP-EYE (ESP32 240MHz)."</li>
+
+<li>Click on "Build."</li>
+
+</ul>
+
+<p style="font-size: 20px;">This will start the process of building a dedicated library that you will be installing in your Arduino IDE.</p>
+
+  <img src="https://circuitdigest.com/sites/default/files/inlineimages/u5/deploymeny-model.jpg" alt="Deployment" style="max-width: 100%; height: auto;">
+
+  <br>
+
+  <p style="font-size: 20px;">The above image shows the process of building the Arduino library, which consists of the trained model. This downloaded file is the esp32 cam object detection code. You can directly install this in the Arduino IDE. Let's see the steps in detail.</p>
+
+  <h2>Uploading Edge Impulse Code to ESP32-CAM</h2>
+
+  <ul>
+    <li>Extract the zip.</li>
+    <li>Copy the <code>*_inferencing</code> folder to <code>Documents/Arduino/libraries</code>.</li>
+    <li>Restart Arduino IDE.</li>
+    <li>Open the example sketch from the new library.</li>
+  </ul>
+
+  <p style="font-size: 20px;">In code:</p>
+  <ul>
+    <li><code>// #define CAMERA_MODEL_ESP_EYE</code> → comment this out</li>
+    <li><code>#define CAMERA_MODEL_AI_THINKER</code> → uncomment this line</li>
+  </ul>
+
+  <p style="font-size: 20px;">Upload and test.</p>
+
+  <video width="640" height="360" controls>
+  <source src="Test with bobby.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 
+</div>
 
-<h4>Assignment: Minimum Viable Product for Final Project</h4>
 
 
 </div>
